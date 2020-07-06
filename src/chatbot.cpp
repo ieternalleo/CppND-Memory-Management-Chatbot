@@ -45,6 +45,26 @@ ChatBot::~ChatBot()
 //// STUDENT CODE
 ////
 
+//Copy Constructor
+ChatBot::ChatBot(const ChatBot& other) :
+    _image(other._image)
+{}
+//Move Constructor
+ChatBot::ChatBot(ChatBot&& other) noexcept
+: _image(std::exchange(other._image,nullptr))
+{
+
+}
+
+//Copy Assignment & Move Assignment
+ChatBot& ChatBot::operator=(ChatBot other) noexcept
+{
+    std::swap(_image,other._image);
+    return *this;
+}
+
+
+
 ////
 //// EOF STUDENT CODE
 
