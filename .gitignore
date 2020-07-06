@@ -3,3 +3,4 @@
 build/**
 valgrind_command
 
+ChatBot/**
