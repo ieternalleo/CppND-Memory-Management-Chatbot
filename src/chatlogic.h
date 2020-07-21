@@ -22,6 +22,8 @@ private:
 
     // data handles (owned)
     std::vector<unique_ptr<GraphNode>> _nodes;
+
+    //Owned by Graph Node
     std::vector<GraphEdge *> _edges;
 
     ////
