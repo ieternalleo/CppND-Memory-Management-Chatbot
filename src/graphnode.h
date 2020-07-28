@@ -3,7 +3,11 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 #include "chatbot.h"
+
+
+using std::unique_ptr;
 
 
 // forward declarations
@@ -16,10 +20,10 @@ private:
     ////
 
     // data handles (owned)
-    std::vector<GraphEdge *> _childEdges;  // edges to subsequent nodes
+    std::vector<unique_ptr<GraphEdge>> _childEdges;  // edges to outgoing nodes
 
     // data handles (not owned)
-    std::vector<GraphEdge *> _parentEdges; // edges to preceding nodes 
+    std::vector<GraphEdge *> _parentEdges; // edges to incoming nodes 
     ChatBot *_chatBot;
 
     ////

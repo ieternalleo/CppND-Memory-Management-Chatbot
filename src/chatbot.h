@@ -3,6 +3,7 @@
 
 #include <wx/bitmap.h>
 #include <string>
+#include <iostream>
 
 class GraphNode; // forward declaration
 class ChatLogic; // forward declaration
@@ -29,6 +30,20 @@ public:
 
     //// STUDENT CODE
     ////
+
+    //Copy Constructor
+    ChatBot(const ChatBot& other);
+    //Move Constructor
+    ChatBot(ChatBot&& other) noexcept;
+    //Copy Assignment 
+    ChatBot& operator=(const ChatBot& other);
+    //Move Assignment
+    ChatBot& operator=(ChatBot&& other) noexcept;
+    
+
+
+
+
 
     ////
     //// EOF STUDENT CODE

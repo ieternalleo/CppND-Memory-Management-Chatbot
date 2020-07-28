@@ -34,7 +34,11 @@ void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
 
 void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
 {
-    _childEdges.push_back(edge);
+    //Wrap edge in unique ptr handle
+    unique_ptr<GraphEdge> newEdge(std::move(edge));
+
+    //push handle to vector
+    _childEdges.push_back(std::move(newEdge));
 }
 
 //// STUDENT CODE
@@ -58,7 +62,8 @@ GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
     //// STUDENT CODE
     ////
 
-    return _childEdges[index];
+    //Unwrap pointer from unique_ptr and return
+    return _childEdges[index].get();
 
     ////
     //// EOF STUDENT CODE
