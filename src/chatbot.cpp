@@ -66,16 +66,22 @@ ChatBot::ChatBot(ChatBot&& other) noexcept
 
 //Copy Assignment
 ChatBot& ChatBot::operator=(const ChatBot& other){
+
+    std::cout << "ChatBot Copy Assignment" << std::endl;    
     return *this = ChatBot(other);
+
 }
 //Move Assignment
 ChatBot& ChatBot::operator=(ChatBot&& other) noexcept
 {
+    std::cout << "ChatBot Move Assignment" << std::endl;
+    
     std::swap(_image,other._image);
     std::swap(_currentNode,other._currentNode);
     std::swap(_rootNode,other._rootNode);
     std::swap(_chatLogic,other._chatLogic);
 
+    
     return *this;
 }
 
