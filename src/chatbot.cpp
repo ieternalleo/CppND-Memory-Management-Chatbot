@@ -86,6 +86,7 @@ ChatBot& ChatBot::operator=(ChatBot&& other) noexcept
     std::swap(_chatLogic,other._chatLogic);
 
     _chatLogic->SetChatbotHandle(this);
+    
     return *this;
 }
 
