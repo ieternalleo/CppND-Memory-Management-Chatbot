@@ -170,10 +170,10 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                             AddAllTokensToElement("KEYWORD", tokens, *edge);
 
                             // store reference in child node - Non-owning. 
-                            (*childNode)->AddEdgeToParentNode(edge.get());
+                            (*childNode)->AddEdgeToParentNode(std::move(edge));
                             
                             // store reference in parent node - Owning
-                            (*parentNode)->AddEdgeToChildNode(std::move(edge.get()));
+                            (*parentNode)->AddEdgeToChildNode(std::move(edge));
                         }
 
                         ////

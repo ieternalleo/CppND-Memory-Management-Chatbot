@@ -27,18 +27,17 @@ void GraphNode::AddToken(std::string token)
     _answers.push_back(token);
 }
 
-void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
+void GraphNode::AddEdgeToParentNode(unique_ptr<GraphEdge> edge)
 {
-    _parentEdges.push_back(edge);
+    _parentEdges.push_back(edge.get());
 }
 
-void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
+void GraphNode::AddEdgeToChildNode(unique_ptr<GraphEdge> edge)
 {
     //Wrap edge in unique ptr handle
-    unique_ptr<GraphEdge> newEdge(std::move(edge));
 
     //push handle to vector
-    _childEdges.push_back(std::move(newEdge));
+    _childEdges.push_back(std::move(edge));
 }
 
 //// STUDENT CODE

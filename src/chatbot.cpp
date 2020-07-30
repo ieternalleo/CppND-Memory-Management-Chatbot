@@ -51,6 +51,7 @@ ChatBot::ChatBot(const ChatBot& other) :
     _chatLogic(other._chatLogic),
     _rootNode(other._rootNode)
 {
+    _chatLogic->SetChatbotHandle(this);
     std::cout << "ChatBot Copy Constructor" << std::endl;
 }
 
@@ -61,6 +62,7 @@ ChatBot::ChatBot(ChatBot&& other) noexcept
     _rootNode(std::exchange(other._rootNode,nullptr))
 
 {
+    _chatLogic->SetChatbotHandle(this);
     std::cout << "ChatBot Move Constructor" << std::endl;
 }
 
@@ -68,7 +70,9 @@ ChatBot::ChatBot(ChatBot&& other) noexcept
 ChatBot& ChatBot::operator=(const ChatBot& other){
 
     std::cout << "ChatBot Copy Assignment" << std::endl;    
+    _chatLogic->SetChatbotHandle(this);
     return *this = ChatBot(other);
+
 
 }
 //Move Assignment
@@ -81,6 +85,7 @@ ChatBot& ChatBot::operator=(ChatBot&& other) noexcept
     std::swap(_rootNode,other._rootNode);
     std::swap(_chatLogic,other._chatLogic);
 
+    _chatLogic->SetChatbotHandle(this);
     
     return *this;
 }
